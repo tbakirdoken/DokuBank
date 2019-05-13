@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "776386859968",
+    "firebase_url": "https://dokubank-c57bd.firebaseio.com",
+    "project_id": "dokubank-c57bd",
+    "storage_bucket": "dokubank-c57bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776386859968:android:935d72c3fa72521a",
+        "android_client_info": {
+          "package_name": "com.tubili.dokubank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776386859968-bo39v6fbl4ovb2krro81952vb702etfh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tubili.dokubank",
+            "certificate_hash": "f602bb3b16c53740b4c1be41c0e451210f3fc0e7"
+          }
+        },
+        {
+          "client_id": "776386859968-302jgfbr7dfj5cajlc4g3juucqmrmfng.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCW34Nn77-hXZ0V3Kz0m92lI2AdnFrcajM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "776386859968-302jgfbr7dfj5cajlc4g3juucqmrmfng.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
