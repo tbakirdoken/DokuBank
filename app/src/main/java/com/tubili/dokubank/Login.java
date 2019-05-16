@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,10 +28,19 @@ import io.paperdb.Paper;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import static com.tubili.dokubank.Common.CLIENT;
+import static com.tubili.dokubank.Common.SERVER;
+import static com.tubili.dokubank.Common.USER_NAME;
+import static com.tubili.dokubank.Common.USER_PASSWORD;
+import static com.tubili.dokubank.Common.USER_PHONE;
+import static com.tubili.dokubank.Common.USER_USERNAME;
+
 public class Login extends AppCompatActivity {
 
     Button btnLogin;
-    EditText txtemail,txtpassword;
+    EditText txtusername,txtpassword;
+    TextView txtRegister;
+    CheckBox rememberMe;
     public static FirebaseAuth auth;
 
     FirebaseDatabase firebaseDatabase;
@@ -51,47 +61,70 @@ public class Login extends AppCompatActivity {
 
 
         btnLogin = findViewById(R.id.buttonLogin);
-        txtemail = findViewById(R.id.editTextUsername);
+        txtusername = findViewById(R.id.editTextUsername);
         txtpassword = findViewById(R.id.editTextPassword);
+        txtRegister = findViewById(R.id.textViewRegister);
+        rememberMe = findViewById(R.id.remember_me);
+
+        txtRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this,Register.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String email = txtemail.getText().toString();
-                final String password = txtpassword.getText().toString();
+                final ProgressDialog progressDialog = new ProgressDialog(Login.this);
+                progressDialog.setMessage("Lütfen bekleyin...");
+                progressDialog.show();
 
-                if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Mail adresinizi girin!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplicationContext(), "Parolayı girin!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                //authenticate user
-                auth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (!task.isSuccessful()) {
-                                    // there was an error
-                                    if (password.length() < 6) {
-                                        txtpassword.setError("Min");
-                                    } else {
-                                        Toast.makeText(Login.this, "Giriş Başarısız", Toast.LENGTH_LONG).show();
-                                    }
-                                } else {
-                                    Toast.makeText(Login.this, "Giriş Başarılı", Toast.LENGTH_SHORT).show();
-                                    //burası değişecek
-                                    Intent intent = new Intent(Login.this, Profile.class);
-                                    startActivity(intent);
-                                    finish();
+                table_user.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        //Checking User avail
+                        if(dataSnapshot.child(txtusername.getText().toString()).exists())
+                        {
+                            //Get User data
+                            progressDialog.dismiss();
+                            User user = dataSnapshot.child(txtusername.getText().toString()).getValue(User.class);
+                            assert user != null;
+                            if (user.getPassword().equals(txtpassword.getText().toString()))
+                            {
+                                //remember me
+                                if(rememberMe.isChecked())
+                                {
+                                    Paper.book(CLIENT).write(USER_USERNAME, txtusername.getText().toString());
+                                    Paper.book(CLIENT).write(USER_PASSWORD, txtpassword.getText().toString());
+                                    Paper.book(CLIENT).write(USER_NAME, user.getName());
                                 }
+
+                                //user.setUsername(txtusername.getText().toString());
+                                Intent intent = new Intent(Login.this, Profile.class);
+                                Common.currentUser = user;
+                                startActivity(intent);
+                                finish();
+                            } else
+                            {
+                                Toast.makeText(Login.this, "Giriş başarısız!", Toast.LENGTH_SHORT).show();
                             }
-                        });
+                        }
+                        else
+                        {
+                            progressDialog.dismiss();
+                            Toast.makeText(Login.this, "Kullanıcı bulunamadı!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -22,6 +23,7 @@ import com.tubili.dokubank.Model.User;
 public class Register extends AppCompatActivity {
     EditText txtUsername,txtName,txtSurname,txtEmail,txtPassword,txtTelephone;
     Button btnRegister;
+    TextView txtLogin;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference table_user;
@@ -36,12 +38,15 @@ public class Register extends AppCompatActivity {
         txtEmail = findViewById(R.id.editTextEmail);
         txtPassword = findViewById(R.id.editTextPassword);
         txtTelephone = findViewById(R.id.editTextTelephone);
+        txtLogin = findViewById(R.id.textViewLogin);
 
         btnRegister = findViewById(R.id.buttonRegister);
 
         //Firebase Init
         firebaseDatabase = FirebaseDatabase.getInstance();
         table_user = firebaseDatabase.getReference("User");
+        Log.i("user",table_user.getKey());
+        Log.i("user",table_user.getDatabase().toString());
 
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +84,14 @@ public class Register extends AppCompatActivity {
                     }
                 });
 
+            }
+        });
+        txtLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Register.this,Login.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

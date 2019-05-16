@@ -12,7 +12,7 @@
         android:title="Talepler"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/app_bar_profil"
+        android:id="@+id/app_bar_ara"
         android:icon="@drawable/ic_find_in_page_black_24dp"
         android:title="Ara"
         app:showAsAction="ifRoom"/>
@@ -29,7 +29,7 @@
         android:title="Haberler"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/app_bar_settings"
+        android:id="@+id/app_bar_profil"
         android:title="Profil"
         android:icon="@drawable/ic_portrait_black_24dp"
         app:showAsAction="ifRoom"/>

@@ -24,6 +24,8 @@
         <activity android:name=".Login" />
         <activity android:name=".Register" />
         <activity android:name=".Profile"></activity>
+        <activity android:name=".UpdateProfileActivity"/>
+        <activity android:name=".NotificationSettingsActivity"/>
     </application>
 
 </manifest>
