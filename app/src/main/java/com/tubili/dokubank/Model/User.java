@@ -3,6 +3,18 @@ package com.tubili.dokubank.Model;
 public class User {
 
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", telephone='" + telephone + '\'' +
+                '}';
+    }
+
     private String username;
     private String name;
     private String lastname;

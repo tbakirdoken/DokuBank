@@ -9,21 +9,27 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.tubili.dokubank.Adapter.ProfileAdapter;
 import com.tubili.dokubank.Fragments.AddNewFragment;
+import com.tubili.dokubank.Fragments.NewsFragment;
 import com.tubili.dokubank.Fragments.ProfileFragment;
+import com.tubili.dokubank.Fragments.SearchFragment;
 import com.tubili.dokubank.Model.ProfileModel;
 
 import java.util.ArrayList;
 
 public class Profile extends AppCompatActivity{
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -39,12 +45,19 @@ public class Profile extends AppCompatActivity{
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             Fragment selectedFragment = null;
             switch (menuItem.getItemId()) {
+                case R.id.app_bar_ara:
+                    selectedFragment = new SearchFragment();
+                    break;
+                case R.id.app_bar_haberler:
+                    selectedFragment = new NewsFragment();
+                    break;
                 case R.id.app_bar_talep_ekle:
                     selectedFragment = new AddNewFragment();
                     break;
                 case R.id.app_bar_profil:
                     selectedFragment = new ProfileFragment();
                     break;
+
 
             }
             getSupportFragmentManager()
@@ -53,4 +66,8 @@ public class Profile extends AppCompatActivity{
             return true;
         }
     };
+
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
+    }
 }

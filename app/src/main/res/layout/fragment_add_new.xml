@@ -4,100 +4,152 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/editTextnameSurname"
-            style="@android:style/Widget.Material.EditText"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:hint="İsim Soyisim"
-            android:inputType="text"
-            android:textColor="@color/sweetprimary" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textViewLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Hastane Adı"
-            android:textAppearance="@android:style/TextAppearance.Material.Medium"
-            android:textColor="@color/sweetprimary" />
-        <Spinner
-            android:id="@+id/city_spinner"
-            style="@android:style/Widget.Material.Spinner.Underlined"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/sweetprimary"
+            <EditText
+                android:id="@+id/editTextName"
+                style="@android:style/Widget.Material.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:hint="İsim "
+                android:inputType="text"
+                android:textColor="@color/sweetprimary" />
 
-            />
-        <TextView
-            android:id="@+id/textViewBloodType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Kan grubu"
-            android:textAppearance="@android:style/TextAppearance.Material.Medium"
-            android:textColor="@color/sweetprimary" />
+            <EditText
+                android:id="@+id/editTextSurname"
+                style="@android:style/Widget.Material.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:hint="Soyisim"
+                android:inputType="text"
+                android:textColor="@color/sweetprimary" />
+
+            <TextView
+                android:id="@+id/textViewCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Şehir"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                android:textColor="@color/sweetprimary" />
+
+            <Spinner
+                android:id="@+id/city_spinner"
+                style="@android:style/Widget.Material.Spinner.Underlined"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/city_array"
+                android:textColor="@color/sweetprimary"
+
+                />
+
+            <TextView
+                android:id="@+id/textViewLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Hastane Adı"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                android:textColor="@color/sweetprimary" />
+
+            <EditText
+                android:id="@+id/editTextHospital"
+                style="@android:style/Widget.Material.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:hint="Hastane"
+                android:inputType="text"
+                android:textColor="@color/sweetprimary" />
+
+            <TextView
+                android:id="@+id/textViewBloodType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Kan grubu"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                android:textColor="@color/sweetprimary" />
 
 
-        <Spinner
-            android:id="@+id/blood_spinner"
-            style="@android:style/Widget.Material.Spinner.Underlined"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@android:style/TextAppearance.Material.Medium"
-            android:textColor="@color/sweetprimary" />
+            <Spinner
+                android:id="@+id/blood_spinner"
+                style="@android:style/Widget.Material.Spinner.Underlined"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/bloodType_arrays"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                android:textColor="@color/sweetprimary" />
 
-        <TextView
-            android:id="@+id/textViewdoku"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Doku Tipi"
-            android:textAppearance="@android:style/TextAppearance.Material.Medium"
-            android:textColor="@color/sweetprimary" />
+            <TextView
+                android:id="@+id/textViewdoku"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Doku Tipi"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                android:textColor="@color/sweetprimary" />
 
 
-        <Spinner
-            android:id="@+id/doku_spinner"
-            style="@android:style/Widget.Material.Spinner.Underlined"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="@android:style/TextAppearance.Material.Medium"
-            android:textColor="@color/sweetprimary" />
+            <Spinner
+                android:id="@+id/doku_spinner"
+                style="@android:style/Widget.Material.Spinner.Underlined"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/TissueType"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                android:textColor="@color/sweetprimary" />
 
-        <TextView
-            android:id="@+id/textViewAge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Hasta Yaşı"
-            android:textAppearance="@android:style/TextAppearance.Material.Medium"
-            android:textColor="@color/sweetprimary" />
-        <EditText
-            android:id="@+id/editTextAge"
-            style="@android:style/Widget.Material.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:inputType="text"
-            android:textColor="@color/sweetprimary" />
+            <TextView
+                android:id="@+id/textViewAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Hasta Yaşı"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium"
+                android:textColor="@color/sweetprimary" />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/editTextAge"
+                style="@android:style/Widget.Material.EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:inputType="text"
+                android:textColor="@color/sweetprimary" />
+
+            <Button
+                android:id="@+id/buttonAddRequest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/sweetprimary"
+                android:text="Gönderi oluştur" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

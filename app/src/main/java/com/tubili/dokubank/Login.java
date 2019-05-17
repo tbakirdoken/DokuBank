@@ -37,6 +37,8 @@ import static com.tubili.dokubank.Common.USER_USERNAME;
 
 public class Login extends AppCompatActivity {
 
+    // TODO: Username alamıyoruz currentuser ile kontrol.
+
     Button btnLogin;
     EditText txtusername,txtpassword;
     TextView txtRegister;
@@ -92,6 +94,9 @@ public class Login extends AppCompatActivity {
                             //Get User data
                             progressDialog.dismiss();
                             User user = dataSnapshot.child(txtusername.getText().toString()).getValue(User.class);
+                            user.setUsername(txtusername.getText().toString());
+                            Log.i("snap-user",user.toString());
+
                             assert user != null;
                             if (user.getPassword().equals(txtpassword.getText().toString()))
                             {
@@ -106,6 +111,8 @@ public class Login extends AppCompatActivity {
                                 //user.setUsername(txtusername.getText().toString());
                                 Intent intent = new Intent(Login.this, Profile.class);
                                 Common.currentUser = user;
+                                Log.i("snap-current-user",Common.currentUser.toString());
+                                Toast.makeText(Login.this, Common.currentUser.getUsername(), Toast.LENGTH_SHORT).show();
                                 startActivity(intent);
                                 finish();
                             } else

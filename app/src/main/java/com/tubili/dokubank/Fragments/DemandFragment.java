@@ -32,6 +32,11 @@ public class DemandFragment extends Fragment {
     private RecyclerView recyclerview;
     private ArrayList<Demand> demandModelArrayList;
 
+    Integer inbox[]={R.mipmap.ic_notification_settings};
+    Integer arrow[]={R.mipmap.ic_right_arrow};
+    String txttrades[]={"Profili Düzenle"};
+    String txthistory[]={"İsminizi, soyisminizi, yaşınızı değiştirin"};
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,20 +47,21 @@ public class DemandFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerview = view.findViewById(R.id.recycler1);
+        recyclerview = view.findViewById(R.id.recycler_demands);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerview.setLayoutManager(layoutManager);
         recyclerview.setItemAnimator(new DefaultItemAnimator());
 
         demandModelArrayList = new ArrayList<>();
 
-        // String name, String surname, String hospitalName, String bloodGroup, String tissueType, int patientAge
-//        for (int i = 0; i < inbox.length; i++) {
-//            Demand demand = new Demand(inbox[i],arrow[i],txttrades[i],txthistory[i]);
-//            demandModelArrayList.add(demand);
-//        }
-//        demandAdapter = new DemandAdapter(getContext(), demandModelArrayList, this);
-//        recyclerview.setAdapter(demandAdapter);
+
+         /*String name, surname, hospitalName,city, bloodGroup, tissueType, patientAge;
+            for (int i = 0; i < inbox.length; i++) {
+            Demand demand = new Demand(inbox[i],arrow[i],txttrades[i],txthistory[i]);
+            demandModelArrayList.add(demand);
+        }
+        demandAdapter = new DemandAdapter(getContext(), demandModelArrayList, this);
+        recyclerview.setAdapter(demandAdapter);*/
     }
 
 }

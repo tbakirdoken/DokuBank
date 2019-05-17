@@ -41,7 +41,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/username"
-                android:inputType="textNoSuggestions" />
+                android:inputType="textNoSuggestions"
+                android:text='"Tubili"' />
 
 
             <EditText
@@ -51,7 +52,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:text="123456" />
 
             <Button
                 android:id="@+id/buttonLogin"
