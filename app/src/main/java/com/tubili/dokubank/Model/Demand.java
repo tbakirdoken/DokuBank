@@ -3,18 +3,33 @@ package com.tubili.dokubank.Model;
 public class Demand {
     private String name;
     private String surname;
-    //private String username;
+    private String telephone;
     private String city;
     private String hospitalName;
     private String bloodGroup;
+
+    @Override
+    public String toString() {
+        return "Demand{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", city='" + city + '\'' +
+                ", hospitalName='" + hospitalName + '\'' +
+                ", bloodGroup='" + bloodGroup + '\'' +
+                ", tissueType='" + tissueType + '\'' +
+                ", patientAge='" + patientAge + '\'' +
+                '}';
+    }
+
     private String tissueType;
     private String patientAge;
 
+    public Demand(){}
 
-    public Demand(String name,String city, String surname, String hospitalName, String bloodGroup, String tissueType, String patientAge) {
+    public Demand(String name,String city, String surname, String telephone, String hospitalName, String bloodGroup, String tissueType, String patientAge) {
         this.name = name;
         this.surname = surname;
-        //this.username = username;
+        this.telephone = telephone;
         this.city = city;
         this.hospitalName = hospitalName;
         this.bloodGroup = bloodGroup;
@@ -39,6 +54,14 @@ public class Demand {
 
     public String getSurname() {
         return surname;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public void setSurname(String surname) {

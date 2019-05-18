@@ -8,19 +8,37 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.tubili.dokubank.Adapter.DemandAdapter;
 import com.tubili.dokubank.Adapter.ProfileAdapter;
+import com.tubili.dokubank.Common;
+import com.tubili.dokubank.Login;
 import com.tubili.dokubank.Model.Demand;
 import com.tubili.dokubank.Model.ProfileModel;
+import com.tubili.dokubank.Model.User;
 import com.tubili.dokubank.NotificationSettingsActivity;
+import com.tubili.dokubank.Profile;
 import com.tubili.dokubank.R;
 import com.tubili.dokubank.UpdateProfileActivity;
 
 import java.util.ArrayList;
+
+import io.paperdb.Paper;
+
+import static com.tubili.dokubank.Common.CLIENT;
+import static com.tubili.dokubank.Common.USER_NAME;
+import static com.tubili.dokubank.Common.USER_PASSWORD;
+import static com.tubili.dokubank.Common.USER_USERNAME;
 
 public class DemandFragment extends Fragment {
 
@@ -32,10 +50,9 @@ public class DemandFragment extends Fragment {
     private RecyclerView recyclerview;
     private ArrayList<Demand> demandModelArrayList;
 
-    Integer inbox[]={R.mipmap.ic_notification_settings};
-    Integer arrow[]={R.mipmap.ic_right_arrow};
-    String txttrades[]={"Profili Düzenle"};
-    String txthistory[]={"İsminizi, soyisminizi, yaşınızı değiştirin"};
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference table_demands;
+
 
     @Nullable
     @Override
@@ -54,14 +71,27 @@ public class DemandFragment extends Fragment {
 
         demandModelArrayList = new ArrayList<>();
 
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        table_demands = firebaseDatabase.getReference("Demand");
 
-         /*String name, surname, hospitalName,city, bloodGroup, tissueType, patientAge;
-            for (int i = 0; i < inbox.length; i++) {
-            Demand demand = new Demand(inbox[i],arrow[i],txttrades[i],txthistory[i]);
-            demandModelArrayList.add(demand);
-        }
-        demandAdapter = new DemandAdapter(getContext(), demandModelArrayList, this);
-        recyclerview.setAdapter(demandAdapter);*/
+        table_demands.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+
+                    Demand demand = ds.getValue(Demand.class);
+                    demandModelArrayList.add(demand);
+                }
+
+                demandAdapter = new DemandAdapter(getContext(), demandModelArrayList);
+                recyclerview.setAdapter(demandAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
-
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+
+    <item
+        android:id="@+id/app_bar_mesaj"
+        android:icon="@drawable/ic_message_black_24dp"
+        android:title="Mesaj Gönder"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/app_bar_phone"
+        android:icon="@drawable/ic_phone_black_24dp"
+        android:title="Ara"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/app_bar_uygunsuz_icerik"
+        android:icon="@drawable/ic_cancel_black_24dp"
+        android:title="Uygunsuz içeriği bildir"
+        app:showAsAction="ifRoom"/>
+
+
+</menu>

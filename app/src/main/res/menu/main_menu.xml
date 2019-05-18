@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
 
-    <item android:title="Mesajlar"
-        android:id="@+id/main_messages_btn"/>
-    <item
-        android:id="@+id/main_logout_btn"
-        android:title="Log Out" />
+    <item android:title="Geri"
+        android:id="@+id/main_back_button"
+        android:icon="@drawable/ic_arrow_back_white_24dp"
+        app:showAsAction="ifRoom"/>
 
 </menu>

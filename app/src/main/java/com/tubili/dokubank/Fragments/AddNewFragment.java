@@ -71,6 +71,7 @@ public class AddNewFragment extends Fragment {
 
                             Demand demand = new Demand(etName.getText().toString(),citySpinner.getSelectedItem().toString(),
                                     etSurname.getText().toString(),
+                                    Common.currentUser.getTelephone(),
                                     etHospital.getText().toString(),
                                     bloodSpinner.getSelectedItem().toString(),tissueSpinner.getSelectedItem().toString(),
                                     etAge.getText().toString());
