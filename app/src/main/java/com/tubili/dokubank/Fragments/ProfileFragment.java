@@ -14,8 +14,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.andremion.counterfab.CounterFab;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.tubili.dokubank.Adapter.ProfileAdapter;
 import com.tubili.dokubank.ChatActivity;
+import com.tubili.dokubank.Model.Chat;
 import com.tubili.dokubank.Model.ProfileModel;
 import com.tubili.dokubank.NotificationSettingsActivity;
 import com.tubili.dokubank.Profile;
@@ -29,7 +38,9 @@ public class ProfileFragment extends Fragment implements ProfileAdapter.OnItemLi
     private ProfileAdapter profileAdapter;
     private RecyclerView recyclerview;
     private ArrayList<ProfileModel> profileModelArrayList;
-    FloatingActionButton fabMessage;
+    CounterFab fabMessage;
+    DatabaseReference reference;
+    FirebaseUser firebaseUser;
 
     Integer inbox[]={R.mipmap.ic_settings, R.mipmap.ic_notification_settings};
     Integer arrow[]={R.mipmap.ic_right_arrow, R.mipmap.ic_right_arrow};
@@ -63,11 +74,32 @@ public class ProfileFragment extends Fragment implements ProfileAdapter.OnItemLi
         profileModelArrayList = new ArrayList<>();
 
         for (int i = 0; i < inbox.length; i++) {
-            ProfileModel pview = new ProfileModel(inbox[i],arrow[i],txttrades[i],txthistory[i]);
+            ProfileModel pview = new ProfileModel(inbox[i], arrow[i], txttrades[i], txthistory[i]);
             profileModelArrayList.add(pview);
         }
-        profileAdapter = new ProfileAdapter(getContext(),profileModelArrayList, this);
+        profileAdapter = new ProfileAdapter(getContext(), profileModelArrayList, this);
         recyclerview.setAdapter(profileAdapter);
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Chats");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int unread = 0;
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Chat chat = snapshot.getValue(Chat.class);
+                    if (chat.getReceiver().equals(firebaseUser.getUid()) && !chat.isIsseen()) {
+                        unread++;
+                    }
+                }
+                fabMessage.setCount(unread);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
