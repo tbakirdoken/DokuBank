@@ -8,7 +8,7 @@ public class User {
         return "User{" +
                 "username='" + username + '\'' +
                 ", name='" + name + '\'' +
-                ", lastname='" + lastname + '\'' +
+                ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", telephone='" + telephone + '\'' +
@@ -16,21 +16,31 @@ public class User {
     }
 
     private String username;
+    private String id;
     private String name;
-    private String lastname;
+    private String surname;
     private String email;
     private String password;
     private String telephone;
+    private String imageURL;
 
     public User(){}
-    public User(String name, String lastname, String email, String password, String telephone) {
+    public User(String id, String name, String surname, String email, String password, String telephone) {
+        this.id=id;
         this.name = name;
-        this.lastname = lastname;
+        this.surname = surname;
         this.email = email;
         this.password = password;
         this.telephone = telephone;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     public String getUsername() {
         return username;
     }
@@ -47,12 +57,12 @@ public class User {
         this.name = name;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public String getEmail() {

@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/username"
                 android:inputType="textNoSuggestions"
-                android:text='"Tubili"' />
+                android:text='edu.tubili@gmail.com' />
 
 
             <EditText
@@ -53,7 +53,7 @@
                 android:ems="10"
                 android:hint="@string/password"
                 android:inputType="textPassword"
-                android:text="123456" />
+                android:text="12345678" />
 
             <Button
                 android:id="@+id/buttonLogin"
@@ -74,6 +74,15 @@
                 android:text="Beni Hatırla"
                 android:textColor="#000"
                 android:gravity="center_vertical"/>
+            <TextView
+                android:id="@+id/textViewForgetPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Parolamı unuttum"
+                android:textAlignment="center"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
             <TextView
                 android:id="@+id/textViewRegister"

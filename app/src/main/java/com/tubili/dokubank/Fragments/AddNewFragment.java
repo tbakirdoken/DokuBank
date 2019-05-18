@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +29,7 @@ public class AddNewFragment extends Fragment {
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference demands;
+    FirebaseUser firebaseUser;
 
     EditText etName,etSurname,etAge,etHospital;
     Spinner citySpinner,bloodSpinner,tissueSpinner;
@@ -68,8 +71,9 @@ public class AddNewFragment extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                             progressDialog.dismiss();
-
-                            Demand demand = new Demand(etName.getText().toString(),citySpinner.getSelectedItem().toString(),
+                            firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                            assert firebaseUser != null;
+                            Demand demand = new Demand(firebaseUser.getUid(),etName.getText().toString(),citySpinner.getSelectedItem().toString(),
                                     etSurname.getText().toString(),
                                     Common.currentUser.getTelephone(),
                                     etHospital.getText().toString(),

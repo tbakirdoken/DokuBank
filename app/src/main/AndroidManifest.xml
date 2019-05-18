@@ -5,9 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -19,6 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".MessageActivity"
+            android:theme="@style/DetailTheme"/>
+
+        <activity android:name=".ChatActivity" />
+        <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,13 +30,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".Login" />
-
         <activity android:name=".Register" />
         <activity android:name=".Profile" />
         <activity android:name=".UpdateProfileActivity" />
         <activity android:name=".NotificationSettingsActivity" />
-        <activity android:name=".DemandDetailActivity"
-            android:theme="@style/DetailTheme"/>
+        <activity
+            android:name=".DemandDetailActivity"
+            android:theme="@style/DetailTheme" />
     </application>
 
 </manifest>

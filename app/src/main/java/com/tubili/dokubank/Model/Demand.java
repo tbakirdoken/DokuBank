@@ -3,6 +3,7 @@ package com.tubili.dokubank.Model;
 public class Demand {
     private String name;
     private String surname;
+    private String userId;
     private String telephone;
     private String city;
     private String hospitalName;
@@ -26,7 +27,8 @@ public class Demand {
 
     public Demand(){}
 
-    public Demand(String name,String city, String surname, String telephone, String hospitalName, String bloodGroup, String tissueType, String patientAge) {
+    public Demand(String userId, String name,String city, String surname, String telephone, String hospitalName, String bloodGroup, String tissueType, String patientAge) {
+        this.userId = userId;
         this.name = name;
         this.surname = surname;
         this.telephone = telephone;
@@ -37,6 +39,13 @@ public class Demand {
         this.patientAge = patientAge;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
     public String getCity() {
         return city;
     }

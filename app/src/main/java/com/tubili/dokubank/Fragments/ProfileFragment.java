@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tubili.dokubank.Adapter.ProfileAdapter;
+import com.tubili.dokubank.ChatActivity;
 import com.tubili.dokubank.Model.ProfileModel;
 import com.tubili.dokubank.NotificationSettingsActivity;
 import com.tubili.dokubank.Profile;
@@ -27,6 +29,7 @@ public class ProfileFragment extends Fragment implements ProfileAdapter.OnItemLi
     private ProfileAdapter profileAdapter;
     private RecyclerView recyclerview;
     private ArrayList<ProfileModel> profileModelArrayList;
+    FloatingActionButton fabMessage;
 
     Integer inbox[]={R.mipmap.ic_settings, R.mipmap.ic_notification_settings};
     Integer arrow[]={R.mipmap.ic_right_arrow, R.mipmap.ic_right_arrow};
@@ -43,10 +46,19 @@ public class ProfileFragment extends Fragment implements ProfileAdapter.OnItemLi
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        fabMessage = view.findViewById(R.id.fabMessages);
         recyclerview = view.findViewById(R.id.recycler1);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerview.setLayoutManager(layoutManager);
         recyclerview.setItemAnimator(new DefaultItemAnimator());
+
+        fabMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ChatActivity.class);
+                startActivity(intent);
+            }
+        });
 
         profileModelArrayList = new ArrayList<>();
 

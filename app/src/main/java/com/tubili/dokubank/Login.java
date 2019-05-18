@@ -25,6 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.tubili.dokubank.Model.User;
 
 import io.paperdb.Paper;
+
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -40,13 +41,14 @@ public class Login extends AppCompatActivity {
     // TODO: Username alamıyoruz currentuser ile kontrol.
 
     Button btnLogin;
-    EditText txtusername,txtpassword;
-    TextView txtRegister;
+    EditText txtusername, txtpassword;
+    TextView txtRegister, txtForgotPass;
     CheckBox rememberMe;
-    public static FirebaseAuth auth;
+    FirebaseAuth auth;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference table_user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +60,7 @@ public class Login extends AppCompatActivity {
 
         //database init
         firebaseDatabase = FirebaseDatabase.getInstance();
-        table_user = firebaseDatabase.getReference("User");
+        table_user = firebaseDatabase.getReference("Users");
         //Log.i("users",table_user.getRoot().toString());
 
 
@@ -67,11 +69,20 @@ public class Login extends AppCompatActivity {
         txtpassword = findViewById(R.id.editTextPassword);
         txtRegister = findViewById(R.id.textViewRegister);
         rememberMe = findViewById(R.id.remember_me);
+        txtForgotPass = findViewById(R.id.textViewForgetPassword);
+
+        txtForgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Login.this, ResetPasswordActivity.class));
+
+            }
+        });
 
         txtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login.this,Register.class);
+                Intent intent = new Intent(Login.this, Register.class);
                 startActivity(intent);
                 finish();
             }
@@ -81,11 +92,44 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                final ProgressDialog progressDialog = new ProgressDialog(Login.this);
-                progressDialog.setMessage("Lütfen bekleyin...");
-                progressDialog.show();
+                String txt_email = txtusername.getText().toString();
+                String txt_password = txtpassword.getText().toString();
 
-                table_user.addValueEventListener(new ValueEventListener() {
+                if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)) {
+                    Toast.makeText(Login.this, "All fileds are required", Toast.LENGTH_SHORT).show();
+                } else {
+                    final ProgressDialog progressDialog = new ProgressDialog(Login.this);
+                    progressDialog.setMessage("Lütfen bekleyin...");
+                    progressDialog.show();
+
+                    auth.signInWithEmailAndPassword(txt_email, txt_password)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        progressDialog.dismiss();
+                                        Intent intent = new Intent(Login.this, Profile.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(intent);
+                                        finish();
+                                    } else {
+                                        Toast.makeText(Login.this, "Authentication failed!", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Login.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
+    }
+                /*table_user.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         //Checking User avail
@@ -135,12 +179,6 @@ public class Login extends AppCompatActivity {
             }
         });
 
-    }
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(Login.this, MainActivity.class);
-        startActivity(intent);
-        finish();
-        super.onBackPressed();
-    }
+    }*/
+
 }
