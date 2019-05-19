@@ -6,7 +6,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textViewOptions"
+            android:id="@+id/textViewOptionsMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -16,10 +16,29 @@
             android:textColor="@color/sweetprimary" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spinnerOptions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/FilterOptions" />
+        <TextView
+            android:id="@+id/textViewOptionType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Arama Tipi"
+            android:textAppearance="@android:style/TextAppearance.Material.Medium"
+            android:textColor="@color/sweetprimary" />
+        <Spinner
+            android:id="@+id/spinnerOptionsMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Spinner
+            android:id="@+id/spinnerOptionsAltMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
 
         <TextView
             android:id="@+id/textViewList"
@@ -32,6 +51,7 @@
             android:textColor="@color/sweetprimary" />
 
         <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_search"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

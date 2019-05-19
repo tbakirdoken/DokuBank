@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
 >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="16dp"
-            android:text="Doku Bank"
+            tools:text="Doku Bank"
             android:textColor="#3b3b3b"
             android:textSize="23dp" />
 
@@ -39,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="2dp"
-            android:text="A Rh+"
+            tools:text="A Rh+"
             android:textColor="#a9a9b0"
             android:textSize="14.3sp" />
 
@@ -64,21 +65,7 @@
                 android:orientation="vertical"
                 android:paddingBottom="13dp">
 
-                <TextView
-                    android:paddingTop="13dp"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="425"
-                    android:textSize="13sp"
-                    android:textColor="#3b3b3b"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Bağışlar"
-                    android:textColor="#a9a9b0"
-                    android:textSize="13sp" />
 
             </LinearLayout>
 
@@ -89,47 +76,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingBottom="13dp">
-                <TextView
-                    android:paddingTop="13dp"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4.6"
-                    android:textSize="12sp"
-                    android:textColor="#3b3b3b"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Bağış Gücü"
-                    android:textColor="#a9a9b0"
-                    android:textSize="13sp" />
             </LinearLayout>
 
 
-            <LinearLayout
-                android:layout_marginLeft="45dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingBottom="13dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:paddingTop="13dp"
-                    android:text="213"
-                    android:textColor="#3b3b3b"
-                    android:textSize="13sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Arkadaş"
-                    android:textColor="#a9a9b0"
-                    android:textSize="12sp" />
-            </LinearLayout>
 
         </LinearLayout>
 

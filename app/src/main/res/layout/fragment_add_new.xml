@@ -21,8 +21,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:hint="İsim "
-                android:inputType="text"
-                android:textColor="@color/sweetprimary" />
+                android:inputType="text"/>
 
             <EditText
                 android:id="@+id/editTextSurname"
@@ -33,7 +32,7 @@
                 android:layout_marginBottom="8dp"
                 android:hint="Soyisim"
                 android:inputType="text"
-                android:textColor="@color/sweetprimary" />
+                />
 
             <TextView
                 android:id="@+id/textViewCity"
@@ -76,14 +75,14 @@
                 android:layout_marginBottom="8dp"
                 android:hint="Hastane"
                 android:inputType="text"
-                android:textColor="@color/sweetprimary" />
+                />
 
             <TextView
                 android:id="@+id/textViewBloodType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="8dp"
                 android:text="Kan grubu"
                 android:textAppearance="@android:style/TextAppearance.Material.Medium"
@@ -126,7 +125,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
                 android:text="Hasta Yaşı"
                 android:textAppearance="@android:style/TextAppearance.Material.Medium"
                 android:textColor="@color/sweetprimary" />
@@ -136,7 +134,6 @@
                 style="@android:style/Widget.Material.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:inputType="text"
                 android:textColor="@color/sweetprimary" />
@@ -147,6 +144,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:background="@color/sweetprimary"
+                android:textColor="@color/white"
                 android:text="Gönderi oluştur" />
 
         </LinearLayout>

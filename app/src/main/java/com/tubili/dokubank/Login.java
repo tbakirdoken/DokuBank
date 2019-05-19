@@ -68,7 +68,6 @@ public class Login extends AppCompatActivity {
         txtusername = findViewById(R.id.editTextUsername);
         txtpassword = findViewById(R.id.editTextPassword);
         txtRegister = findViewById(R.id.textViewRegister);
-        rememberMe = findViewById(R.id.remember_me);
         txtForgotPass = findViewById(R.id.textViewForgetPassword);
 
         txtForgotPass.setOnClickListener(new View.OnClickListener() {

@@ -8,12 +8,20 @@
     android:background="#ffffff"
     tools:context="com.tubili.dokubank.Profile">
 
-
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/MenuStyle"/>
 
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_profile"
         android:layout_above="@id/bottom_navigation">
 
     </FrameLayout>
@@ -27,7 +35,6 @@
         android:background="@color/colorPrimary"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottomappbar_menu">
 
     </android.support.design.widget.BottomNavigationView>

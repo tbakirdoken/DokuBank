@@ -11,7 +11,7 @@ public class User {
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", telephone='" + telephone + '\'' +
+                ", phone='" + phone + '\'' +
                 '}';
     }
 
@@ -21,17 +21,17 @@ public class User {
     private String surname;
     private String email;
     private String password;
-    private String telephone;
+    private String phone;
     private String imageURL;
 
     public User(){}
-    public User(String id, String name, String surname, String email, String password, String telephone) {
+    public User(String id, String name, String surname, String email, String password, String phone) {
         this.id=id;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
-        this.telephone = telephone;
+        this.phone = phone;
     }
 
     public String getId() {
@@ -81,11 +81,11 @@ public class User {
         this.password = password;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

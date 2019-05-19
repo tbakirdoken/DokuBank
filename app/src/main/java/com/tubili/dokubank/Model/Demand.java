@@ -4,10 +4,14 @@ public class Demand {
     private String name;
     private String surname;
     private String userId;
-    private String telephone;
+    private String phone;
     private String city;
     private String hospitalName;
     private String bloodGroup;
+    private String longitude;
+
+    private String latitude;
+
 
     @Override
     public String toString() {
@@ -19,6 +23,7 @@ public class Demand {
                 ", bloodGroup='" + bloodGroup + '\'' +
                 ", tissueType='" + tissueType + '\'' +
                 ", patientAge='" + patientAge + '\'' +
+                ", phone='" + phone + '\''+
                 '}';
     }
 
@@ -27,16 +32,17 @@ public class Demand {
 
     public Demand(){}
 
-    public Demand(String userId, String name,String city, String surname, String telephone, String hospitalName, String bloodGroup, String tissueType, String patientAge) {
+    public Demand(String userId, String name,String city, String surname, String phone, String hospitalName, String bloodGroup, String tissueType, String patientAge) {
         this.userId = userId;
         this.name = name;
         this.surname = surname;
-        this.telephone = telephone;
+        this.phone = phone;
         this.city = city;
         this.hospitalName = hospitalName;
         this.bloodGroup = bloodGroup;
         this.tissueType = tissueType;
         this.patientAge = patientAge;
+
     }
 
     public String getUserId() {
@@ -65,12 +71,12 @@ public class Demand {
         return surname;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public void setSurname(String surname) {

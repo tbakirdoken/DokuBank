@@ -2,6 +2,7 @@ package com.tubili.dokubank;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class UpdateProfileActivity extends AppCompatActivity {
 
@@ -9,5 +10,10 @@ public class UpdateProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_prof);
+
+
+        Toast.makeText(UpdateProfileActivity.this, Common.currentUser.getName(), Toast.LENGTH_SHORT).show();
+
+
     }
 }

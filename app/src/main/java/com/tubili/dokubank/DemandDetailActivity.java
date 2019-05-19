@@ -1,6 +1,7 @@
 package com.tubili.dokubank;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -10,15 +11,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import android.widget.Toast;
 
 public class DemandDetailActivity extends AppCompatActivity {
 
     TextView txtDetail, txtTelephone;
 
-    Button btnSendMessage,btnCall;
+    Button btnSendMessage,btnCall,btnMap;
     String messageTemplate = "$IL$, $HASTANEADI$ yatmakta olan $ISIM$ isimli hastanın acilen $KANGRUBU$ $DOKUTIPI$ ihtiyaç duymaktadır.";
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -38,6 +37,22 @@ public class DemandDetailActivity extends AppCompatActivity {
         txtDetail = findViewById(R.id.txtDetail);
         txtTelephone = findViewById(R.id.txtTelephone);
         btnSendMessage = findViewById(R.id.btnSendMessage);
+        btnCall = findViewById(R.id.btnCall);
+        btnMap = findViewById(R.id.btnMap);
+
+        btnMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+               // String latLng = "geo:0,0?z=5&q="+Common.selectedDemand.getLatitude()+","+Common.selectedDemand.getLongitude();
+                String latLng = "geo:0,0?z=5&q="+Common.selectedDemand.getCity()+"+"+Common.selectedDemand.getHospitalName();
+                Toast.makeText(DemandDetailActivity.this, latLng, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(latLng));
+                Intent chooser = Intent.createChooser(intent, "Launch Maps");
+                startActivity(chooser);
+
+            }
+        });
 
         btnSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +65,17 @@ public class DemandDetailActivity extends AppCompatActivity {
         });
 
         createMessageTemplate();
-        txtTelephone.setText(Common.selectedDemand.getTelephone());
+
+        txtTelephone.setText(Common.selectedDemand.getPhone());
+
+        btnCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:"+txtTelephone.getText().toString()));
+                //intent.setData(Uri.parse(txtTelephone.toString()));
+                startActivity(intent);
+            }
+        });
     }
 
     void createMessageTemplate(){

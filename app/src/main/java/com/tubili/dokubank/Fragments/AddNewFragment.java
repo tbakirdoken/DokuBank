@@ -1,7 +1,6 @@
 package com.tubili.dokubank.Fragments;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -75,9 +74,10 @@ public class AddNewFragment extends Fragment {
                             assert firebaseUser != null;
                             Demand demand = new Demand(firebaseUser.getUid(),etName.getText().toString(),citySpinner.getSelectedItem().toString(),
                                     etSurname.getText().toString(),
-                                    Common.currentUser.getTelephone(),
+                                    Common.currentUser.getPhone(),
                                     etHospital.getText().toString(),
-                                    bloodSpinner.getSelectedItem().toString(),tissueSpinner.getSelectedItem().toString(),
+                                    bloodSpinner.getSelectedItem().toString(),
+                                    tissueSpinner.getSelectedItem().toString(),
                                     etAge.getText().toString());
 
 
@@ -86,6 +86,10 @@ public class AddNewFragment extends Fragment {
                             //String username = Common.currentUser.getUsername();
                             demands.push().setValue(demand);
                             Toast.makeText(getContext(), "Talebiniz başarı ile oluşturuldu!", Toast.LENGTH_SHORT).show();
+                            etSurname.setText("");
+                            etName.setText("");
+                            etHospital.setText("");
+                            etAge.setText("");
 
                     }
 
@@ -96,6 +100,7 @@ public class AddNewFragment extends Fragment {
                 });
             }
         });
+
 
         return RootView;
 

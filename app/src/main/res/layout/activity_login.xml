@@ -53,7 +53,7 @@
                 android:ems="10"
                 android:hint="@string/password"
                 android:inputType="textPassword"
-                android:text="12345678" />
+                android:text="123456789" />
 
             <Button
                 android:id="@+id/buttonLogin"
@@ -67,13 +67,6 @@
                 android:textAlignment="center"
                 android:textColor="@android:color/white" />
 
-            <CheckBox
-                android:id="@+id/remember_me"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Beni Hatırla"
-                android:textColor="#000"
-                android:gravity="center_vertical"/>
             <TextView
                 android:id="@+id/textViewForgetPassword"
                 android:layout_width="match_parent"

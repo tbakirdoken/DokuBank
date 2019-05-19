@@ -1,11 +1,13 @@
 package com.tubili.dokubank;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.tubili.dokubank.Model.Demand;
 import com.tubili.dokubank.Model.User;
 
 public class Common {
     public static User currentUser;
     public static Demand selectedDemand;
+    public static LatLng latLng;
 
     //public static Request currentRequest;
     public final static String UPDATE = "Güncelle";

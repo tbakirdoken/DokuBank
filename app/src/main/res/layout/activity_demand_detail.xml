@@ -22,10 +22,10 @@
 
         <TextView
             android:id="@+id/txtDetail"
-            android:layout_width="311dp"
-            android:layout_height="117dp"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="80dp"
             android:fontFamily="sans-serif-condensed"
             android:text="Eskişehir, Osmangazi Üniversitesi Tıp Fakültesinde yatmakta olan Tuğba Bakırdöken isimli hasta acilen A Rh+ kana ihtiyaç duymaktadır. İletişim için; "
             android:textColor="@android:color/holo_red_dark"
@@ -36,12 +36,10 @@
 
         <TextView
             android:id="@+id/txtTelephone"
-            android:layout_width="226dp"
-            android:layout_height="43dp"
-            android:layout_marginStart="76dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="+90 553 487 11 00"
+            android:gravity="center"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,19 +51,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="50dp"
+        android:weightSum="1">
 
         <Button
             android:id="@+id/btnSendMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mesaj" />
+            android:drawableLeft="@drawable/ic_message_black_24dp"
+            android:text="Mesaj"
+            android:layout_weight="0.3"
+            />
 
         <Button
             android:id="@+id/btnCall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ara" />
+            android:text="Ara"
+            android:layout_weight="0.3"
+            android:drawableLeft="@drawable/ic_call_black_24dp"/>
+
+        <Button
+            android:id="@+id/btnMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Harita"
+            android:layout_weight="0.3"
+            android:drawableLeft="@drawable/ic_map_black_24dp"
+            />
 
     </LinearLayout>
 
