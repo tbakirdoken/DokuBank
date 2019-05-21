@@ -81,6 +81,7 @@ public class DemandFragment extends Fragment {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
                     Demand demand = ds.getValue(Demand.class);
+                    demand.setDemandId(ds.getKey().toString());
                     demandModelArrayList.add(demand);
                 }
 

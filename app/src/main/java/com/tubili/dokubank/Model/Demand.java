@@ -8,11 +8,9 @@ public class Demand {
     private String city;
     private String hospitalName;
     private String bloodGroup;
-    private String longitude;
-
-    private String latitude;
 
 
+    private String demandId;
     @Override
     public String toString() {
         return "Demand{" +
@@ -42,7 +40,15 @@ public class Demand {
         this.bloodGroup = bloodGroup;
         this.tissueType = tissueType;
         this.patientAge = patientAge;
+        this.demandId = "";
 
+    }
+    public String getDemandId() {
+        return demandId;
+    }
+
+    public void setDemandId(String demandId) {
+        this.demandId = demandId;
     }
 
     public String getUserId() {

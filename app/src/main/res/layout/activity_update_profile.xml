@@ -55,10 +55,10 @@ android:orientation="vertical">
     android:hint="+901234567890"
     android:inputType="phone" />
 
-<Button
-    android:id="@+id/btnSignUp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Kayıt Ol" />
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Güncelle" />
 
 </LinearLayout>

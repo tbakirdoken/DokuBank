@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,6 +32,7 @@ public class Profile extends AppCompatActivity{
     FirebaseUser firebaseUser;
     DatabaseReference reference;
     FirebaseAuth firebaseAuth;
+    Fragment selectedFragment = null;
 
 
     @Override
@@ -60,6 +60,8 @@ public class Profile extends AppCompatActivity{
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 User user = dataSnapshot.getValue(User.class);
+                user.setId(dataSnapshot.getKey());
+                Log.i( "user-id",user.getId());
                 Common.currentUser = user;
             }
             @Override
@@ -70,7 +72,7 @@ public class Profile extends AppCompatActivity{
 
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.getMenu().getItem(4).setChecked(true);
-        CountDownTimer countDownTimer = new CountDownTimer(150, 50) {
+        CountDownTimer countDownTimer = new CountDownTimer(400, 50) {
 
             public void onTick(long millisUntilFinished) { }
 
@@ -90,7 +92,7 @@ public class Profile extends AppCompatActivity{
     BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            Fragment selectedFragment = null;
+
             switch (menuItem.getItemId()) {
                 case R.id.app_bar_gönderiler:
                     selectedFragment = new DemandFragment();
@@ -123,6 +125,13 @@ public class Profile extends AppCompatActivity{
         switch (item.getItemId()) {
             case R.id.logout_menu:
                 firebaseAuth.signOut();
+                // User chose the "Settings" item, show the app settings UI...
+                return true;
+            case R.id.demand_menu:
+                Intent intent = new Intent(Profile.this,MyDemandsActivity.class);
+                startActivity(intent);
+                finish();
+
                 // User chose the "Settings" item, show the app settings UI...
                 return true;
 

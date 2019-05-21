@@ -3,9 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     >
 
+    <item android:title="Taleplerim"
+        android:id="@+id/demand_menu"
+        android:icon="@drawable/ic_more_vert_white_24dp"
+        app:showAsAction="never"/>
     <item android:title="Çıkış"
         android:id="@+id/logout_menu"
         android:icon="@drawable/ic_more_vert_white_24dp"
         app:showAsAction="never"/>
+
 
 </menu>
