@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -42,13 +43,10 @@ import static com.tubili.dokubank.Common.USER_USERNAME;
 
 public class DemandFragment extends Fragment {
 
-    // TODO: Talepler veritabanından çekilecek
-    // TODO: ArrayList'e atılacak
-    // TODO: Click event'ini oluştur DemandAdapter.java
-
     private DemandAdapter demandAdapter;
     private RecyclerView recyclerview;
     private ArrayList<Demand> demandModelArrayList;
+    SearchView searchView;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference table_demands;
@@ -65,34 +63,39 @@ public class DemandFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerview = view.findViewById(R.id.recycler_demands);
+        searchView = view.findViewById(R.id.search_bar);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerview.setLayoutManager(layoutManager);
         recyclerview.setItemAnimator(new DefaultItemAnimator());
+
 
         demandModelArrayList = new ArrayList<>();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         table_demands = firebaseDatabase.getReference("Demand");
 
-        table_demands.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+            table_demands.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                    Demand demand = ds.getValue(Demand.class);
-                    demand.setDemandId(ds.getKey().toString());
-                    demandModelArrayList.add(demand);
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+
+                        Demand demand = ds.getValue(Demand.class);
+                        demand.setDemandId(ds.getKey().toString());
+                        demandModelArrayList.add(demand);
+                    }
+
+                    demandAdapter = new DemandAdapter(getContext(), demandModelArrayList);
+                    recyclerview.setAdapter(demandAdapter);
                 }
 
-                demandAdapter = new DemandAdapter(getContext(), demandModelArrayList);
-                recyclerview.setAdapter(demandAdapter);
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
 
-            }
-        });
     }
+
 }

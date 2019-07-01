@@ -15,6 +15,7 @@
 
             <EditText
                 android:id="@+id/editTextName"
+                android:layout_margin="5dp"
                 style="@android:style/Widget.Material.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -25,6 +26,7 @@
 
             <EditText
                 android:id="@+id/editTextSurname"
+                android:layout_margin="5dp"
                 style="@android:style/Widget.Material.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,6 +40,7 @@
                 android:id="@+id/textViewCity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_gravity="left"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
@@ -49,6 +52,7 @@
                 android:id="@+id/city_spinner"
                 style="@android:style/Widget.Material.Spinner.Underlined"
                 android:layout_width="fill_parent"
+                android:layout_margin="5dp"
                 android:layout_height="wrap_content"
                 android:entries="@array/city_array"
                 android:textColor="@color/sweetprimary"
@@ -58,6 +62,7 @@
             <TextView
                 android:id="@+id/textViewLocation"
                 android:layout_width="match_parent"
+                android:layout_margin="5dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginTop="8dp"
@@ -68,6 +73,7 @@
 
             <EditText
                 android:id="@+id/editTextHospital"
+                android:layout_margin="5dp"
                 style="@android:style/Widget.Material.EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -80,6 +86,7 @@
             <TextView
                 android:id="@+id/textViewBloodType"
                 android:layout_width="match_parent"
+                android:layout_margin="5dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginTop="15dp"
@@ -91,6 +98,7 @@
 
             <Spinner
                 android:id="@+id/blood_spinner"
+                android:layout_margin="5dp"
                 style="@android:style/Widget.Material.Spinner.Underlined"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -100,6 +108,7 @@
 
             <TextView
                 android:id="@+id/textViewdoku"
+                android:layout_margin="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
@@ -112,6 +121,7 @@
 
             <Spinner
                 android:id="@+id/doku_spinner"
+                android:layout_margin="5dp"
                 style="@android:style/Widget.Material.Spinner.Underlined"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -123,6 +133,7 @@
                 android:id="@+id/textViewAge"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_gravity="left"
                 android:layout_marginTop="8dp"
                 android:text="Hasta Yaşı"
@@ -133,16 +144,18 @@
                 android:id="@+id/editTextAge"
                 style="@android:style/Widget.Material.EditText"
                 android:layout_width="match_parent"
+                android:layout_margin="5dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:inputType="text"
-                android:textColor="@color/sweetprimary" />
+                 />
 
             <Button
                 android:id="@+id/buttonAddRequest"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:layout_margin="5dp"
                 android:background="@color/sweetprimary"
                 android:textColor="@color/white"
                 android:text="Gönderi oluştur" />

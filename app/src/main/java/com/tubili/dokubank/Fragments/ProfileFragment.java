@@ -50,15 +50,14 @@ public class ProfileFragment extends Fragment implements ProfileAdapter.OnItemLi
     FirebaseUser firebaseUser;
     FirebaseAuth firebaseAuth;
 
-    Integer inbox[]={R.mipmap.ic_settings, R.mipmap.ic_notification_settings};
-    Integer arrow[]={R.mipmap.ic_right_arrow, R.mipmap.ic_right_arrow};
-    String txttrades[]={"Profili Düzenle", "Bildirim Ayarları"};
-    String txthistory[]={"İsminizi, soyisminizi, yaşınızı değiştirin", "Almak istediğiniz bildirim tiplerini seçin"};
+    Integer inbox[]={R.mipmap.ic_settings};
+    Integer arrow[]={R.mipmap.ic_right_arrow};
+    String txttrades[]={"Profili Düzenle"};
+    String txthistory[]={"İsminizi, soyisminizi, yaşınızı değiştirin"};
 
     @Override
     public void onStart() {
         super.onStart();
-        Toast.makeText(getContext(), Common.currentUser.getName(), Toast.LENGTH_SHORT).show();
         String nameSurname = Common.currentUser.getName()+" "+Common.currentUser.getSurname();
         txtProfilusername.setText(Common.currentUser.getUsername());
         txtProfileName.setText(nameSurname);
@@ -121,20 +120,6 @@ public class ProfileFragment extends Fragment implements ProfileAdapter.OnItemLi
             }
         });
 
-//        CountDownTimer countDownTimer = new CountDownTimer(120, 50) {
-//
-//            public void onTick(long millisUntilFinished) {
-//
-//                //mTextView.setText("Seconds Remaining: " + millisUntilFinished / 1000);
-//            }
-//
-//            public void onFinish() {
-//
-//                //mTextView.setText("Time Up!");
-//
-//            }
-//        };
-//        countDownTimer.start();
 
     }
 

@@ -1,5 +1,6 @@
 package com.tubili.dokubank;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -43,7 +44,6 @@ public class MyDemandsActivity extends AppCompatActivity {
         demandModelArrayList = new ArrayList<>();
 
         String userId = Common.currentUser.getId();
-        Toast.makeText(MyDemandsActivity.this, userId, Toast.LENGTH_SHORT).show();
         firebaseDatabase = FirebaseDatabase.getInstance();
         table_mydemands = firebaseDatabase.getReference("Demand");
 
@@ -71,5 +71,13 @@ public class MyDemandsActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(MyDemandsActivity.this, Profile.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
     }
 }

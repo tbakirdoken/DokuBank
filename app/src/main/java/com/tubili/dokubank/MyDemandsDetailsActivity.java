@@ -3,6 +3,7 @@ package com.tubili.dokubank;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,19 +31,15 @@ public class MyDemandsDetailsActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("Demand");
 
-        btnEdit = findViewById(R.id.btnEdit);
         btnDelete = findViewById(R.id.btnDelete);
         txtDetail = findViewById(R.id.txtDetail);
         txtTelephone = findViewById(R.id.txtTelephone);
 
+        createMessageTemplate();
+
         txtTelephone.setText(Common.selectedDemand.getPhone());
 
-        btnEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,8 +60,10 @@ public class MyDemandsDetailsActivity extends AppCompatActivity {
                 builder.setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         databaseReference.child(Common.selectedDemand.getDemandId()).removeValue();
-                        Toast.makeText(MyDemandsDetailsActivity.this, Common.selectedDemand.getUserId(), Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(MyDemandsDetailsActivity.this, "Talep başarıyla silindi", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MyDemandsDetailsActivity.this, MyDemandsActivity.class);
+                        startActivity(intent);
+                        finish();
 
                     }
                 });

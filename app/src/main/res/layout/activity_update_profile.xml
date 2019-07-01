@@ -56,9 +56,9 @@ android:orientation="vertical">
     android:inputType="phone" />
 
     <Button
-        android:id="@+id/btnSignUp"
+        android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Güncelle" />
+        android:text="Günfcelle" />
 
 </LinearLayout>

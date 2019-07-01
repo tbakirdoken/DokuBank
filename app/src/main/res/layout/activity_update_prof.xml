@@ -32,22 +32,6 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/etEMail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="E-mail"
-        android:inputType="textEmailAddress" />
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Parola"
-        android:inputType="textPassword" />
-
-    <EditText
         android:id="@+id/etPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,7 +40,7 @@
         android:inputType="phone" />
 
     <Button
-        android:id="@+id/btnSignUp"
+        android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Güncelle" />

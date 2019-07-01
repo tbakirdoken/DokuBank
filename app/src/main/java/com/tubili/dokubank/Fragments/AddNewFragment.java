@@ -24,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.tubili.dokubank.Common;
 import com.tubili.dokubank.Model.Demand;
 import com.tubili.dokubank.R;
+import com.tubili.dokubank.Register;
 
 public class AddNewFragment extends Fragment {
 
@@ -35,6 +36,7 @@ public class AddNewFragment extends Fragment {
     Spinner citySpinner,bloodSpinner,tissueSpinner;
     String username;
     Button btnAddRequest;
+    ProgressDialog progressDialog;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -56,19 +58,30 @@ public class AddNewFragment extends Fragment {
 
 
         btnAddRequest = RootView.findViewById(R.id.buttonAddRequest);
-
-        Toast.makeText(getContext(), username, Toast.LENGTH_SHORT).show();
-
         btnAddRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final ProgressDialog progressDialog = new ProgressDialog(getContext());
-                progressDialog.setMessage("Lütfen bekleyin...");
-                progressDialog.show();
 
-                demands.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                String name = etName.getText().toString();
+                String surName = etSurname.getText().toString();
+                String age = etAge.getText().toString();
+                String city = citySpinner.getSelectedItem().toString();
+                String blood = bloodSpinner.getSelectedItem().toString();
+                String tissue = tissueSpinner.getSelectedItem().toString();
+                String hospital = etHospital.getText().toString();
+
+                if (!name.matches("") && !surName.matches("") &&
+                        !age.matches("") && !city.matches("") &&
+                        !blood.matches("") && !tissue.matches("") &&
+                        !hospital.matches("")){
+
+                    progressDialog = new ProgressDialog(getContext());
+                    progressDialog.setMessage("Lütfen bekleyin...");
+                    progressDialog.show();
+                    demands.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                             progressDialog.dismiss();
                             firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -93,13 +106,44 @@ public class AddNewFragment extends Fragment {
                             etHospital.setText("");
                             etAge.setText("");
 
-                    }
+                        }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    }
-                });
+                        }
+                    });
+
+                }
+
+                else if (name.matches("")){
+                    Toast.makeText(getContext(), "Lütfen isminizi giriniz", Toast.LENGTH_SHORT).show();
+                }
+
+                else if (surName.matches("")){
+                    Toast.makeText(getContext(), "Lütfen soyadınızı giriniz", Toast.LENGTH_SHORT).show();
+                }
+
+                else if (age.matches("")){
+                    Toast.makeText(getContext(), "Lütfen yaşınızı giriniz", Toast.LENGTH_SHORT).show();
+                }
+
+                else if (city.matches("")){
+                    Toast.makeText(getContext(), "Lütfen şehir giriniz", Toast.LENGTH_SHORT).show();
+                }
+
+                else if (blood.matches("")){
+                    Toast.makeText(getContext(), "Lütfen kan grubunu giriniz", Toast.LENGTH_SHORT).show();
+                }
+
+                else if (tissue.matches("")){
+                    Toast.makeText(getContext(), "Lütfen doku türünü giriniz", Toast.LENGTH_SHORT).show();
+                }
+                else if (hospital.matches("")){
+                    Toast.makeText(getContext(), "Lütfen hastane adı giriniz", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 

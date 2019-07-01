@@ -78,7 +78,6 @@ public class DemandAdapter extends RecyclerView.Adapter<DemandAdapter.ViewHolder
             Intent intent = new Intent(view.getContext(),DemandDetailActivity.class);
             view.getContext().startActivity(intent);
 
-            Toast.makeText(view.getContext(), "Clicklendim" +Common.selectedDemand.toString(), Toast.LENGTH_SHORT).show();
         }
     }
 }

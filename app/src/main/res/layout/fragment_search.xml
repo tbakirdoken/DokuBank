@@ -1,49 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
         <TextView
+            android:layout_margin="10dp"
             android:id="@+id/textViewOptionsMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:text="Arama Seçenekleri"
+            android:text="Kan Grubu"
             android:textAppearance="@android:style/TextAppearance.Material.Medium"
             android:textColor="@color/sweetprimary" />
 
         <Spinner
             android:id="@+id/spinnerOptions"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/FilterOptions" />
-        <TextView
-            android:id="@+id/textViewOptionType"
+
+        <Button
+            android:id="@+id/btnTik"
+            android:layout_margin="10dp"
+            android:background="@color/sweetprimary"
+            android:textColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Arama Tipi"
-            android:textAppearance="@android:style/TextAppearance.Material.Medium"
-            android:textColor="@color/sweetprimary" />
-        <Spinner
-            android:id="@+id/spinnerOptionsMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <Spinner
-            android:id="@+id/spinnerOptionsAltMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:text="Getir" />
 
 
-
-        <TextView
+    <TextView
             android:id="@+id/textViewList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="Listelenenler"
@@ -52,6 +48,7 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_search"
+            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 

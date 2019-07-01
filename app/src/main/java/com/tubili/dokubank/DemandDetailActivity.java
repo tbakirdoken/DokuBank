@@ -46,7 +46,6 @@ public class DemandDetailActivity extends AppCompatActivity {
 
                // String latLng = "geo:0,0?z=5&q="+Common.selectedDemand.getLatitude()+","+Common.selectedDemand.getLongitude();
                 String latLng = "geo:0,0?z=5&q="+Common.selectedDemand.getCity()+"+"+Common.selectedDemand.getHospitalName();
-                Toast.makeText(DemandDetailActivity.this, latLng, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(latLng));
                 Intent chooser = Intent.createChooser(intent, "Launch Maps");
                 startActivity(chooser);

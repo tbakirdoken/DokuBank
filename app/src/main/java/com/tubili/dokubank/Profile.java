@@ -72,7 +72,7 @@ public class Profile extends AppCompatActivity{
 
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.getMenu().getItem(4).setChecked(true);
-        CountDownTimer countDownTimer = new CountDownTimer(400, 50) {
+        CountDownTimer countDownTimer = new CountDownTimer(1000, 50) {
 
             public void onTick(long millisUntilFinished) { }
 
